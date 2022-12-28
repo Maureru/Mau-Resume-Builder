@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import './App.css'
 import Navbar from './components/Navbar'
@@ -31,13 +31,14 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/app' element={<Apps/>}/>
-          <Route path='/app/final' element={<Final/>}/>
-        </Routes>
-      </BrowserRouter>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/app' element={<Apps/>}/>
+            <Route path='/app/final' element={<Final/>}/>
+          </Routes>
+      </HashRouter>
+      
     </div>
   )
 }

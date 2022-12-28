@@ -39,7 +39,7 @@ function TemplateModal({close, isOpen = false}: {close: () => void, isOpen: bool
                     {
                         templatesData.map((template, i) => (
                             <motion.div key={i} variants={staggeredItemCard} className='group object-cover relative rounded-sm overflow-hidden aspect-[8.5/11] lg:hover:scale-[1.5] hover:z-50 transition-all w-[300px] '>
-                                <img className='w-full h-full object-cover' src={`../src/assets/${template.image}`} alt=''/>
+                                <img className='w-full h-full object-cover' src={`/assets/${template.image}`} alt=''/>
                                 <div className='w-full h-full hidden group-hover:flex justify-center items-center bg-black/30 absolute top-0 left-0 z-20'>
                                     <button onClick={() => {
                                         dispatch(setTemplate(template.id));

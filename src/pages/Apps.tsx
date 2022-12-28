@@ -657,7 +657,7 @@ function Apps() {
       {
         loading ? (
           <div className='fixed top-0 left-0 z-40 w-full h-full flex justify-center items-center bg-white/50 dark:bg-gray-800/50'>
-        <img src='../src/assets/loading.svg'/>
+        <img src='/assets/loading.svg'/>
       </div>
         ) : null
       }

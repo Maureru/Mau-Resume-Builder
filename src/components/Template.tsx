@@ -13,7 +13,7 @@ import html2canvas from 'html2canvas'
 
 function Template({form}: {form:any}) {
 
-    const ref = useRef<HTMLDivElement>(null)
+    const ref = useRef<HTMLDivElement>(null!)
     
 
     var doc = new jsPDF();
@@ -77,7 +77,7 @@ function Template({form}: {form:any}) {
                                 EDUCATION
                             </div>
                             {
-                                form.education.map((edu, i) => (
+                                form.education.map((edu:any, i:number) => (
                                     <div key={i}>
                                         <p className='mt-2 text-sm font-semibold'>{edu.degree} - {edu.fieldStudy}</p>
                                         <p className='text-[13px]'>{edu.schoolName}</p>
@@ -93,7 +93,7 @@ function Template({form}: {form:any}) {
                                 SKILLS
                             </div>
                             {
-                                form.skills.map((skill, i) => (
+                                form.skills.map((skill: any, i:number) => (
                                     <div key={i} className='grid grid-cols-2 px-2 py-1 gap-3 items-center'>
                                         <p className=''>{skill.name}</p>
                                         <div className='bg-gray-300 h-2 w-full overflow-hidden rounded-md'>
@@ -140,7 +140,7 @@ function Template({form}: {form:any}) {
                                     EXPERIENCE
                             </div>
                             {
-                                form.experience.map((exp, i) => (
+                                form.experience.map((exp: any, i: number) => (
                                     <div className='p-4'>
                                         <p className='font-semibold uppercase'>{exp.jobTitle}</p>
                                         <p className='text-[12px]'>{exp.employer} | {exp.startDate} - {exp.endDate === 0 ? 'Present' : exp.endDate}</p>

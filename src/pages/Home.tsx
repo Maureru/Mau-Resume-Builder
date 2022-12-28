@@ -50,7 +50,7 @@ function Home() {
         </AnimatePresence>
         <div id='header'  className='mb-4 mt-8 lg:mt-0 min-h-[calc(100vh-4rem)] flex flex-col lg:grid grid-cols-2 w-full'>
             <div className='overflow-hidden order-2 lg:order-first my-8 lg:my-0 select-none flex justify-center'>
-                <img src='../src/assets/avatar.png' alt='' className='h-full'/>
+                <img src='/assets/avatar.png' alt='' className='h-full'/>
             </div>
             <div className='flex flex-col justify-center'>
                 <div>

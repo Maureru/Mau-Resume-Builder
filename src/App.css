@@ -1,0 +1,9 @@
+/* #templateModal {
+  transition: ease-in 0.2s;
+  animation: showTemplate 0.2s forwards ease-in-out;
+}
+
+@keyframes showTemplate {
+  from {opacity: 0; ;}
+  to {opacity: 1;}
+} */

@@ -1,5 +1,6 @@
+import { AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router'
 import { HashRouter } from 'react-router-dom'
 
 import './App.css'
@@ -15,8 +16,8 @@ import { useAppDispatch, useAppSelector } from './store/hooks'
 function App() {
 
   const {theme} = useAppSelector((state: RootState) => state)
-  const dispatch = useAppDispatch()
-  console.log(theme.darkMode);
+
+
 
   useEffect(() => {
     if (theme.darkMode) {
@@ -28,15 +29,18 @@ function App() {
     }
   }, [theme.darkMode])
   
+  
   return (
     <div className="App">
       <Navbar/>
       <HashRouter>
-        <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/app' element={<Apps/>}/>
-            <Route path='/app/final' element={<Final/>}/>
-          </Routes>
+        <AnimatePresence exitBeforeEnter>
+          <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/app' element={<Apps/>}/>
+              <Route path='/app/final' element={<Final/>}/>
+            </Routes>
+        </AnimatePresence>
       </HashRouter>
       
     </div>

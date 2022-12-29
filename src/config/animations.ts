@@ -62,3 +62,23 @@ export const staggeredItemCard = {
     hide: {opacity: 0},
     show: {opacity: 1}
 }
+
+export const transition = {
+    initial: {
+        opacity: 0,
+    },
+    transition: {
+        opacity: 1,
+        transition: {
+            ease: 'linear',
+            duration: 1
+        }
+    },
+    exit: {
+        opacity: 0,
+        transition: {
+            ease: 'linear',
+            duration: 1
+        }
+    },
+}

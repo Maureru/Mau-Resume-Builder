@@ -5,6 +5,7 @@ import { countries, months, year } from '../data/countries'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { addEducation, addExperience, addPersonalInfo, addSkill, addSummary, nextStep, prevStep, removeEducation, removeExperience, removeSkill } from '../reducers/formSlice'
 import { useNavigate } from 'react-router-dom'
+import Transition from '../components/Transition'
 
 function Apps() {
   const {form} = useAppSelector(state => state)
@@ -54,7 +55,7 @@ function Apps() {
     }
   )
 
-  console.log(form.skills.length);
+  
   
 
   const [experience, setExperience] = useState({
@@ -111,7 +112,7 @@ function Apps() {
   }
 
 
-  console.log(experience);
+  
   
   const addExp = () => {
     if (experience.jobDescription !== '' && experience.jobTitle !== '' && experience.employer !== '' && experience.city !== '' && experience.state !== '' && experience.startDate !== 0) {
@@ -141,7 +142,7 @@ function Apps() {
     }
   }
 
-  console.log(forms.skills);
+ 
   const scroll = () => {
     sc.current?.scrollIntoView({behavior: 'smooth'})
     sce.current?.scrollIntoView({behavior: 'smooth'})
@@ -150,7 +151,7 @@ function Apps() {
   const renderMultiStepForm = () => {
     if (form.step === 1) {
       return (
-        <div className='flex-1'>
+        <div className='flex-1 mb-[5rem] lg:mb-0'>
           <h1 className='text-2xl'>COMPLETE YOUR <span className='font-bold'>RESUME HEADING</span></h1>
           <p>Employers will use this information to contact you.</p>
           <div className='mt-8 grid grid-cols-2 gap-4'>
@@ -190,7 +191,7 @@ function Apps() {
               </div>
             </div>
           </div>
-          <div className='mt-8 grid grid-cols-2 gap-4'>
+          <div className='mt-8 mb-[5rem] lg:mb-0 grid grid-cols-2 gap-4'>
             <div>
               <p className='text-[12px]'>Email</p>
               <input value={forms.personalInfo.email} onChange={handleChangeInfo} name='email' type="text" placeholder='eg. john@gmail.com' className='mt-1 rounded-sm p-2 w-full bg-transparent border'/>
@@ -214,7 +215,7 @@ function Apps() {
                 <div className='outline p-2 flex items-center rounded-lg justify-between'>
                   <div>
                     <p className='font-bold'>{exp.jobTitle} <span className='font-thin text-sm'>{exp.employer}</span></p>
-                    <p className='text-sm font-mono'>{exp.city} <span>{exp.startDate} - {exp.endDate}</span></p>
+                    <p className='text-sm font-mono'>{exp.city} <span>{exp.startDate} - {exp.endDate === 0 ? 'Present' : exp.endDate}</span></p>
                   </div>
                   <div className='flex pr-3 gap-4 text-xl'>
                     <AiTwotoneEdit className='cursor-pointer'/>
@@ -653,7 +654,8 @@ function Apps() {
 
 
   return (
-    <div className='px-8'>
+    <Transition>
+      <div className='px-8'>
       {
         loading ? (
           <div className='fixed top-0 left-0 z-40 w-full h-full flex justify-center items-center bg-white/50 dark:bg-gray-800/50'>
@@ -671,6 +673,7 @@ function Apps() {
         </div>
       </div>
     </div>
+    </Transition>
   )
 }
 

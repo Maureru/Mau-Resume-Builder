@@ -3,14 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { BsCheckAll } from 'react-icons/bs'
 
 import TemplateModal from '../components/TemplateModal';
-import { templateModal } from '../config/animations';
+import { templateModal, transition } from '../config/animations';
+import { setTemplate } from '../reducers/formSlice';
+import { useAppDispatch } from '../store/hooks';
 
 
 function Home() {
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+    const dispatch = useAppDispatch();
     
-    
+    useEffect(() => {
+        dispatch(setTemplate(0));
+    }, [])
 
 
 
@@ -48,10 +53,10 @@ function Home() {
             isModalOpen ? <TemplateModal  isOpen={isModalOpen} close={closeModal}/> : null
         }
         </AnimatePresence>
-        <div id='header'  className='mb-4 mt-8 lg:mt-0 h-auto lg:h-[calc(100vh-4rem)] flex flex-col lg:grid grid-cols-2 w-full'>
-            <div className='overflow-hidden order-2 lg:order-first my-8 lg:my-0 select-none flex justify-center'>
-                <img src='/assets/avatar.png' alt='' className='h-full'/>
-            </div>
+        <div id='header'  className='mb-4 lg:mb-0 mt-8 lg:mt-0 h-auto lg:h-[calc(100vh-4rem)] flex flex-col lg:grid grid-cols-2 w-full'>
+            <motion.div variants={transition} initial="initial" animate="transition" className='overflow-hidden order-2 lg:order-first my-8 lg:my-0 select-none flex justify-center'>
+                <img src='/assets/avatar.png' alt='' loading='lazy' className='h-full'/>
+            </motion.div>
             <div className='flex flex-col justify-center'>
                 <div>
                     <h1 className='uppercase text-4xl lg:text-5xl font-bold'>Impressive Resumes</h1>

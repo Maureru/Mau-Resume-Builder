@@ -47,34 +47,36 @@ function Navbar() {
         </div>
       </a>
       <div className="flex gap-2 lg:gap-4 items-center">
-        <div className="hidden lg:flex gap-2">
-          {steps.map((step, i) => (
-            <div className="flex gap-2 items-center" key={i}>
-              {step.step <= form.step ? (
-                <MdCheckBox className="text-green-500 text-xl" />
-              ) : (
-                <MdCheckBoxOutlineBlank />
-              )}
-              <p>{step.name}</p>
+        {form.templateId === 0 ? null : (
+          <>
+            <div className="hidden lg:flex gap-2">
+              {steps.map((step, i) => (
+                <div className="flex gap-2 items-center" key={i}>
+                  {step.step <= form.step ? (
+                    <MdCheckBox className="text-green-500 text-xl" />
+                  ) : (
+                    <MdCheckBoxOutlineBlank />
+                  )}
+                  <p>{step.name}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <div className="flex lg:hidden">
-          {steps.map((step, i) => {
-            if (step.step === form.step) {
-                return (
-                    <div className='flex gap-2 items-center' key={i}>
-                        <MdCheckBox className="text-green-500 text-xl" />
-                        <p>{step.name}</p>
+            <div className="flex lg:hidden">
+              {steps.map((step, i) => {
+                if (step.step === form.step) {
+                  return (
+                    <div className="flex gap-2 items-center" key={i}>
+                      <MdCheckBox className="text-green-500 text-xl" />
+                      <p>{step.name}</p>
                     </div>
-                )
-            } else {
-                return (
-                    <></>
-                )
-            }
-          })}
-        </div>
+                  );
+                } else {
+                  return <></>;
+                }
+              })}
+            </div>
+          </>
+        )}
         {/* ================ theme mode toggle ============= */}
         <div
           onClick={() => {
